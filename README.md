@@ -2,6 +2,21 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.0.
 
+Notes:
+1. Installed Node.js on local machine
+2. Installed Visual Studio code IDE for Angular
+3. Installed angular cli on local machine using command:
+    npm install -g @angular/cli
+4. Created new project: ng new loanmgmt-ui
+5. Imported project to VS Code IDE
+6. Stated Node Server: ng serve --open
+7. Created components : login and search-loan
+   ng generate component login
+   ng generate component search-loan
+8. Add Anagular meterial 
+    ng add @angular/material
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
