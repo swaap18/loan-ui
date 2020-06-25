@@ -17,12 +17,13 @@ Notes:
     ng add @angular/material
 
 
-Git commands:
-git init
-git remote add origin https://github.com/cjagan/loanmgmt-ui.git
-git add .
-git commit -m"message"
-git push origin master --force
+Move to Project folder and execute following git command
+1. git init
+2. git remote add origin https://github.com/cjagan/loanmgmt-ui.git
+3. git add .
+4. git commit -m"message"
+5. git push origin master --force
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
