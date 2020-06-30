@@ -15,6 +15,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
 import {RouterModule, Routes} from '@angular/router';
 import {MatTableModule} from '@angular/material/table';
+import { AddLoanComponent } from './add-loan/add-loan.component';
 
 const appRoutes:Routes=[
   {path: 'searchloan',component: SearchLoanComponent},
@@ -26,7 +27,8 @@ const appRoutes:Routes=[
   declarations: [
     AppComponent,
     LoginComponent,
-    SearchLoanComponent
+    SearchLoanComponent,
+    AddLoanComponent
   ],
   imports: [
     BrowserModule,

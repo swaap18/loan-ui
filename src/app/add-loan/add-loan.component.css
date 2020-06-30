@@ -19,3 +19,9 @@
   .mat-card {
     width: 800px;
     }
+
+    .button {
+      margin:2px;
+      display: flex;
+      justify-content: flex-end;
+    }
