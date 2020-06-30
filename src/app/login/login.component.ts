@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   submit(){
      console.log(this.f.username.value);
-    // console.log(this.form['password'].value);
+    console.log(this.form.controls.password.value);
     console.log(this.form.value);
     // this.router.navigate(['searchloan']);
   }

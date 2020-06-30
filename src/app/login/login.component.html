@@ -18,8 +18,11 @@
   {{ error }}
 </p> -->
 
-<div class="button">
+<!-- <div class="button">
   <button type="submit" mat-button>Login</button>
+</div> -->
+<div class="button">
+  <button mat-raised-button color="primary" type="submit" [disabled]="form.controls.username.hasError('required') || form.controls.password.hasError('required')">Login</button>
 </div>
 
 </form>

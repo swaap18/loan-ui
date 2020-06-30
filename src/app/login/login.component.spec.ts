@@ -22,4 +22,9 @@ describe('LoginComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should create two form controls',()=>{
+    expect(component.form.contains('username')).toBe(true);
+    expect(component.form.contains('password')).toBe(true);
+  })
 });
