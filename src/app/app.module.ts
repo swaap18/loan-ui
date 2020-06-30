@@ -16,6 +16,7 @@ import {MatCardModule} from '@angular/material/card';
 import {RouterModule, Routes} from '@angular/router';
 import {MatTableModule} from '@angular/material/table';
 import { AddLoanComponent } from './add-loan/add-loan.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 const appRoutes:Routes=[
   {path: 'searchloan',component: SearchLoanComponent},
@@ -43,6 +44,7 @@ const appRoutes:Routes=[
     MatInputModule,
     MatToolbarModule,
     MatTableModule,
+    MatSnackBarModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],

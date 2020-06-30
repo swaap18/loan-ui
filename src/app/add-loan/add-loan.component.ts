@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -10,7 +11,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class AddLoanComponent implements OnInit {
 
   form:FormGroup;
-  constructor(private fb:FormBuilder) {
+  durationInSeconds=5;
+  constructor(private fb:FormBuilder,private _snackBar: MatSnackBar) {
     this.form=this.fb.group({
       userFirstName: ['',Validators.required],
       userLastName:['',Validators.required],
@@ -37,4 +39,22 @@ export class AddLoanComponent implements OnInit {
     console.log(this.form.controls.address.value);
     console.log(this.form.controls.legaldocs.value);
   }
+
+  openSnackBar() {
+    this._snackBar.openFromComponent(PizzaPartyComponent, {
+      duration: this.durationInSeconds * 1000,
+    });
+  }
 }
+
+
+@Component({
+  selector: 'snack-bar-component-example-snack',
+  template:'<span class="example-pizza-party"> Successfully Submitted  </span>',
+  styles: [`
+    .example-pizza-party {
+      color: hotpink;
+    }
+  `],
+})
+export class PizzaPartyComponent {}
