@@ -4,17 +4,17 @@ import {Validators} from '@angular/forms'
 import {Router} from '@angular/router'
 
 @Component({
-  selector: 'app-search-loan',
-  templateUrl: './search-loan.component.html',
-  styleUrls: ['./search-loan.component.css']
+  selector: 'app-view-loan',
+  templateUrl: './view-loan.component.html',
+  styleUrls: ['./view-loan.component.css']
 })
-export class SearchLoanComponent implements OnInit {
+export class ViewLoanComponent implements OnInit {
   form:FormGroup=new FormGroup({
-    username: new FormControl('',[Validators.required]),
-    password:new FormControl('',[Validators.required]),
+    //username: new FormControl('',[Validators.required]),
+    //password:new FormControl('',[Validators.required]),
     });
 
-  constructor(public router:Router) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
@@ -24,7 +24,7 @@ export class SearchLoanComponent implements OnInit {
     //console.log(this.f.username.value);
     //console.log(this.form.controls.password.value);
     //console.log(this.form.value);
-    this.router.navigate(['viewloan']);
+    //this.router.navigate(['searchloan']);
 
   }
 }

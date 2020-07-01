@@ -7,17 +7,6 @@
   box-shadow: 2px 2px 2px 2px grey;
 }
 
-/*.mat-form-field {
-  width: 100%;
-  min-width: 300px;
-} */
-
-/* mat-card-title,
-mat-card-content {
-  display: flex;
-  justify-content: center;
-} */
-
 .error {
   padding: 16px;
   width: 300px;
