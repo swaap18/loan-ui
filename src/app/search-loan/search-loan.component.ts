@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms'
-import {Validators} from '@angular/forms'
-import {Router} from '@angular/router'
+import { FormControl, FormGroup } from '@angular/forms'
+import { Validators } from '@angular/forms'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-search-loan',
@@ -9,17 +9,17 @@ import {Router} from '@angular/router'
   styleUrls: ['./search-loan.component.css']
 })
 export class SearchLoanComponent implements OnInit {
-  form:FormGroup=new FormGroup({
-    username: new FormControl('',[Validators.required]),
-    password:new FormControl('',[Validators.required]),
-    });
+  form: FormGroup = new FormGroup({
+    fullName: new FormControl('', [Validators.required]),
+    loanId: new FormControl('', [Validators.required]),
+  });
 
-  constructor(public router:Router) { }
+  constructor(public router: Router) { }
 
   ngOnInit(): void {
   }
 
-  submit(){
+  submit() {
     console.log("");
     //console.log(this.f.username.value);
     //console.log(this.form.controls.password.value);

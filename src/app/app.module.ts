@@ -15,6 +15,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { RouterModule, Routes } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { HttpClientModule } from '@angular/common/http';
+
 import { AddLoanComponent } from './add-loan/add-loan.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ViewLoanComponent } from './view-loan/view-loan.component';
@@ -31,8 +35,10 @@ const appRoutes: Routes = [
     AppComponent,
     LoginComponent,
     SearchLoanComponent,
-    AddLoanComponent
+    AddLoanComponent,
+    ViewLoanComponent
   ],
+  entryComponents: [ViewLoanComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -47,6 +53,9 @@ const appRoutes: Routes = [
     MatToolbarModule,
     MatTableModule,
     MatSnackBarModule,
+    MatPaginatorModule,
+    MatSortModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],

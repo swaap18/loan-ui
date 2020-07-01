@@ -6,7 +6,7 @@ Notes:
 1. Installed Node.js on local machine
 2. Installed Visual Studio code IDE for Angular
 3. Installed angular cli on local machine using command:
-    npm install -g @angular/cli
+    npm install -g @angular/cli@9.0.0
 4. Created new project: ng new loanmgmt-ui
 5. Imported project to VS Code IDE
 6. Stated Node Server: ng serve --open
