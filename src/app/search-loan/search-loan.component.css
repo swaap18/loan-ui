@@ -1,7 +1,7 @@
 :host {
   display: flex;
   justify-content: center;
-  margin: 70px 0px;
+  margin: 10px 0px;
 }
 .mat-card{
   box-shadow: 2px 2px 2px 2px grey;
