@@ -1,7 +1,7 @@
 :host {
     display: flex;
     justify-content: center;
-    margin: 100px 0px;
+    margin: 10px 0px;
   }
 .example-form {
     min-width: 150px;
@@ -23,8 +23,11 @@
     .mat-card
 
     .button {
-      margin:2px;
+      margin-left: 18px;
+      margin-right: 20px;
       display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
+      align-items: center;
+    }
+    .mat-raised-button{
+      margin-left: 18px;
     }
