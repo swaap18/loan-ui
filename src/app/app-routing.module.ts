@@ -6,9 +6,9 @@ import { AddLoanComponent } from './add-loan/add-loan.component';
 
 
 const routes: Routes = [
-  {path: '', component: LoginComponent},
-  {path: 'app-search-loan',component: SearchLoanComponent},
-  {path:'addloan',component:AddLoanComponent}
+  { path: '', component: LoginComponent },
+  { path: 'app-search-loan', component: SearchLoanComponent },
+  { path: 'addloan', component: AddLoanComponent }
 ];
 
 @NgModule({

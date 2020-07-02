@@ -23,6 +23,7 @@ Move to Project folder and execute following git command
 3. git add .
 4. git commit -m"message"
 5. git push origin master --force
+6. git duet
 
 ## Development server
 
