@@ -3,8 +3,8 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { SearchLoanComponent } from './search-loan/search-loan.component';
+import { LoginComponent } from './components/login/login.component';
+import { SearchLoanComponent } from './components/search-loan/search-loan.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -18,16 +18,11 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { HttpClientModule } from '@angular/common/http';
-import { AddLoanComponent } from './add-loan/add-loan.component';
-import { ViewLoanComponent } from './view-loan/view-loan.component';
+import { AddLoanComponent } from './components/add-loan/add-loan.component';
+import { ViewLoanComponent } from './components/view-loan/view-loan.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { AuthenticationService } from './services/authentication.service';
-import { AuthenticationGuard } from './authentication.guard';
-
-const appRoutes:Routes=[
-  {path: 'searchloan',component: SearchLoanComponent,canActivate:[AuthenticationGuard]},
-  { path: 'viewLoan', component: ViewLoanComponent }
-  // {path:'login',component:LoginComponent}
+import { AuthenticationGuard } from './shared/auth/authentication.guard';
 
 @NgModule({
   declarations: [
@@ -54,8 +49,7 @@ const appRoutes:Routes=[
     MatSnackBarModule,
     MatPaginatorModule,
     MatSortModule,
-    HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    HttpClientModule
   ],
   exports: [
     MatTableModule,
