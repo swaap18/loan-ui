@@ -14,38 +14,41 @@ import { MatTableDataSource } from '@angular/material/table'
 
 export class SearchLoanComponent implements OnInit {
   form: FormGroup = new FormGroup({
-    fullName: new FormControl('', [Validators.required]),
-    loanId: new FormControl('', [Validators.required]),
-
+    fullName: new FormControl('', []),
+    loanId: new FormControl('', []),
+    loanAmt: new FormControl('', [])
   });
 
   displayedColumns: string[] = ['position', 'name', 'loan_num', 'loan_amt'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource = new MatTableDataSource;
 
-  constructor(public router: Router) { }
+  constructor(public router: Router) {
+  }
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit(): void {
-
-     
   }
-  
+
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator
     this.dataSource.sort = this.sort;
   }
-  submit() {
-    console.log("");
-    //console.log(this.f.username.value);
-    //console.log(this.form.controls.password.value);
-    //console.log(this.form.value);
-    this.router.navigate(['viewloan']);
 
+  submit() {
+    this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+    console.log("======" + this.form.controls.fullName.value);
+    this.searchLoan(this.form.controls.fullName.value);
+    //console.log("======FilteredData" + this.dataSource.filteredData);    
+  }
+
+  searchLoan(filterValue: string) {
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase();
+    this.dataSource.filter = filterValue;
   }
 }
-
 
 /* Static data */
 export interface PeriodicElement {

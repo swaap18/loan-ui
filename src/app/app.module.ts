@@ -28,6 +28,7 @@ const appRoutes:Routes=[
   {path: 'searchloan',component: SearchLoanComponent,canActivate:[AuthenticationGuard]},
   { path: 'viewLoan', component: ViewLoanComponent }
   // {path:'login',component:LoginComponent}
+]
 
 @NgModule({
   declarations: [
