@@ -8,21 +8,21 @@
             <td>
               <mat-form-field appearance="outline">
                 <mat-label>Borrower Full Name</mat-label>
-                <input type="text" matInput placeholder="">
+                <input type="text" matInput placeholder="" formControlName="fullName">
                 <!-- <mat-hint>Hint</mat-hint> -->
               </mat-form-field>
             </td>
             <td>
               <mat-form-field appearance="outline">
                 <mat-label>Loan Number</mat-label>
-                <input type="text" matInput placeholder="">
+                <input type="text" matInput placeholder="" formControlName="loanId">
                 <!-- <mat-hint>Hint</mat-hint> -->
               </mat-form-field>
             </td>
             <td>
               <mat-form-field appearance="outline">
                 <mat-label>Loan Amount</mat-label>
-                <input type="text" matInput placeholder="">
+                <input type="text" matInput placeholder="" formControlName="loanAmt">
                 <span matPrefix>$&nbsp;</span>
                 <!-- <mat-hint>Hint</mat-hint> -->
               </mat-form-field>
@@ -44,7 +44,7 @@
   </div> -->
 </mat-card>
 
-<mat-card>
+<mat-card *ngIf="dataSource.data.length">
   <mat-card-title>Search Results</mat-card-title>
   <mat-card-content>
     <div class="wrapper">

@@ -14,11 +14,11 @@ export class AuthenticationGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       console.log(sessionStorage.getItem('username')+'guard');
       if(!sessionStorage.getItem('username')){
-        this.router.navigate(['login']);
-      return false;
+        this.router.navigate(['/login']);
+        return false;
       }
-     else 
-     return true;
+      else 
+        return true;
   }
   
 }
