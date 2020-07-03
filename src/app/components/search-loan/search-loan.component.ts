@@ -48,6 +48,11 @@ export class SearchLoanComponent implements OnInit {
     filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
   }
+
+  resetOnClick() {
+    this.dataSource = new MatTableDataSource;
+  }
+
 }
 
 /* Static data */
