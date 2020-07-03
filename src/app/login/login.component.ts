@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms'
 import {Validators} from '@angular/forms'
 import {Router} from '@angular/router'
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -15,13 +16,15 @@ export class LoginComponent implements OnInit {
   });
   hide:boolean=true;
 
-  constructor(public router:Router) { }
+  constructor(public router:Router,  private authService:AuthenticationService) { }
 
   submit(){
     console.log(this.f.username.value);
     console.log(this.form.controls.password.value);
     console.log(this.form.value);
-    this.router.navigate(['searchloan']);
+    this.authService.setUserName(this.form.controls.username.value);
+    console.log(this.authService.getUserName());
+    this.router.navigate(['\searchloan']);
   }
   get f(){
     return this.form.controls;

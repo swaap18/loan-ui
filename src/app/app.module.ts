@@ -17,10 +17,12 @@ import {RouterModule, Routes} from '@angular/router';
 import {MatTableModule} from '@angular/material/table';
 import { AddLoanComponent } from './add-loan/add-loan.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { AuthenticationService } from './services/authentication.service';
+import { AuthenticationGuard } from './authentication.guard';
 
 const appRoutes:Routes=[
-  {path: 'searchloan',component: SearchLoanComponent},
-  {path:'login',component:LoginComponent}
+  {path: 'searchloan',component: SearchLoanComponent,canActivate:[AuthenticationGuard]},
+  // {path:'login',component:LoginComponent}
 ];
 
 
@@ -47,7 +49,7 @@ const appRoutes:Routes=[
     MatSnackBarModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
