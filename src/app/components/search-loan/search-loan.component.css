@@ -31,15 +31,15 @@ body {
   background: #f6f7ff;
 } */
 
-.wrapper {
+/* .wrapper {
   max-width: 700px;
   margin: 50px auto;
   width: 100%;
-}
-/* 
+} */
+
 table {
   width: 100%;
-} */
+}
 
 th.mat-sort-header-sorted {
   color: black;
