@@ -4,7 +4,8 @@ import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 import { Component, ViewChild, OnInit, AfterViewInit } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { Router } from '@angular/router'
+import { Router, ActivatedRoute,ParamMap } from '@angular/router'
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-view-loan',
@@ -12,7 +13,7 @@ import { Router } from '@angular/router'
   styleUrls: ['./view-loan.component.css']
 })
 export class ViewLoanComponent implements AfterViewInit {
-
+  // export class ViewLoanComponent implements OnInit {
   displayedColumns: string[] = ['created', 'state', 'number', 'title'];
   exampleDatabase: ExampleHttpDatabase | null;
   data: GithubIssue[] = [];
@@ -86,3 +87,30 @@ export class ExampleHttpDatabase {
     return this._httpClient.get<GithubApi>(requestUrl);
   }
 }
+
+// id:string;
+// form:FormGroup;
+// emp=[{name:"raj", id:"9898110"},{name:"saj", id:"09112"}];
+// dataShow:any;
+// constructor(private route:ActivatedRoute,private fb:FormBuilder){
+// this.form=this.fb.group({
+//   name:[''],
+//   id:['']
+// }
+// )
+// }
+// ngOnInit():void{
+//   this.route.paramMap.subscribe((p)=>this.id=p.get('loanId'));
+//   console.log(this.id);
+//   this.emp.forEach((ele)=> {if(ele.id===this.id)this.dataShow=ele});
+//   console.log(this.dataShow);
+//   console.log(this.form.controls.name.value);
+//   this.form.setValue(this.dataShow);
+//   //this.form=this.dataShow;
+
+// }
+// submit(){
+//   console.log(this.form.controls.name.value);
+//   console.log(this.form.controls.id.value);
+// }
+// }

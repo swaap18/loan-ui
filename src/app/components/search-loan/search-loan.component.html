@@ -32,7 +32,7 @@
       </div>
       <div class="button-row">
         <button mat-flat-button color="primary" type="submit"
-          [disabled]="form.controls.fullName.hasError('required') && form.controls.loanId.hasError('required') && form.controls.loanAmt.hasError('required')">Search</button>
+          [disabled]="form.controls.fullName.hasError('minlength') || form.controls.loanId.hasError('minlength')|| form.controls.loanAmt.hasError('minlength')">Search</button>
         <button mat-flat-button color="primary" type="reset" (click)='resetOnClick()'>Reset</button>
         <button mat-flat-button color="primary" routerLink="/addloan"> Add Loan</button>
       </div>
@@ -63,7 +63,7 @@
 
         <ng-container matColumnDef="loan_num">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Loan Number </th>
-          <td mat-cell *matCellDef="let element"><a href="#" routerLink="/addloan"> {{element.loan_num}} </a></td>
+          <td mat-cell *matCellDef="let element"><a href="#"[routerLink]="['/viewLoan',element.loan_num]"> {{element.loan_num}} </a></td>
         </ng-container>
 
         <ng-container matColumnDef="loan_amt">

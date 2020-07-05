@@ -7,9 +7,9 @@ import {AuthenticationGuard} from './shared/auth/authentication.guard';
 import { ViewLoanComponent } from './components/view-loan/view-loan.component';
 
 const routes: Routes = [
-  {path:'searchloan',component: SearchLoanComponent,canActivate:[AuthenticationGuard] ,runGuardsAndResolvers:'always'},
-  {path:'addloan',component:AddLoanComponent,canActivate:[AuthenticationGuard] ,runGuardsAndResolvers:"always"},
-  { path:'viewLoan', component: ViewLoanComponent, canActivate:[AuthenticationGuard],runGuardsAndResolvers:"always"},
+  {path:'searchloan',component: SearchLoanComponent,canActivate:[AuthenticationGuard]},
+  {path:'addloan',component:AddLoanComponent,canActivate:[AuthenticationGuard] },
+  { path:'viewLoan/:loanId', component: ViewLoanComponent, canActivate:[AuthenticationGuard]},
   {path:'login',component:LoginComponent},
   { path: '**', redirectTo: 'login'}
 ];

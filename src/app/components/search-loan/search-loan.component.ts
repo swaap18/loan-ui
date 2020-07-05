@@ -14,9 +14,9 @@ import { MatTableDataSource } from '@angular/material/table'
 
 export class SearchLoanComponent implements OnInit {
   form: FormGroup = new FormGroup({
-    fullName: new FormControl('', [Validators.required]),
-    loanId: new FormControl('', [Validators.required]),
-    loanAmt: new FormControl('', [Validators.required])
+    fullName: new FormControl('', [Validators.minLength(3)]),
+    loanId: new FormControl('', [Validators.minLength(3)]),
+    loanAmt: new FormControl('', [Validators.minLength(3)])
   });
 
   displayedColumns: string[] = ['position', 'name', 'loan_num', 'loan_amt'];
