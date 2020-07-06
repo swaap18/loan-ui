@@ -20,9 +20,16 @@ import { MatSortModule } from '@angular/material/sort';
 import { HttpClientModule } from '@angular/common/http';
 import { AddLoanComponent } from './components/add-loan/add-loan.component';
 import { ViewLoanComponent } from './components/view-loan/view-loan.component';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AuthenticationService } from './services/authentication.service';
 import { AuthenticationGuard } from './shared/auth/authentication.guard';
+import { EditLoanComponent } from './components/edit-loan/edit-loan.component';
+
+const appRoutes: Routes = [
+  { path: 'searchloan', component: SearchLoanComponent, canActivate: [AuthenticationGuard] },
+  { path: 'viewLoan', component: ViewLoanComponent }
+  // {path:'login',component:LoginComponent}
+]
 
 @NgModule({
   declarations: [
@@ -30,7 +37,8 @@ import { AuthenticationGuard } from './shared/auth/authentication.guard';
     LoginComponent,
     SearchLoanComponent,
     AddLoanComponent,
-    ViewLoanComponent
+    ViewLoanComponent,
+    EditLoanComponent
   ],
   entryComponents: [ViewLoanComponent],
   imports: [
