@@ -24,6 +24,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AuthenticationService } from './services/authentication.service';
 import { AuthenticationGuard } from './shared/auth/authentication.guard';
 import { EditLoanComponent } from './components/edit-loan/edit-loan.component';
+import { DatePipe } from '@angular/common';
 
 const appRoutes: Routes = [
   { path: 'searchloan', component: SearchLoanComponent, canActivate: [AuthenticationGuard] },
@@ -64,7 +65,7 @@ const appRoutes: Routes = [
     MatPaginatorModule,
     MatSortModule
   ],
-  providers: [AuthenticationService],
+  providers: [AuthenticationService,DatePipe],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
