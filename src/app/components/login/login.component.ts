@@ -35,13 +35,18 @@ export class LoginComponent implements OnInit {
       console.log("checking for this.userPassword:"+this.user.userPassword);
      
       if(this.user.userPassword === password){
-        console.log("auth passed");
+        console.log("Auth passed");
         this.authService.setUserName(userName);
         this.router.navigate(['/searchloan']);
       }else{
-        console.log("auth not passed");
-        this.error="UserId or Password are invalid."
+        console.log("Auth not passed");
+        this.error=`Your login attempt was not successful. Try again.
+        Reason: Invalid Credentials.`
       }
+    },err =>{ 
+      console.log("Auth not passed:"+err);
+        this.error=`Your login attempt was not successful. Try again.
+        Reason: Invalid Credentials.`
     });
    
   }
