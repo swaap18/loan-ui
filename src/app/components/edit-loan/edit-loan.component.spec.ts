@@ -4,6 +4,8 @@ import {Router} from '@angular/router'
 import { AuthenticationService } from '../../services/authentication.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {FormBuilder } from '@angular/forms';
+import { ActivatedRoute,ParamMap } from '@angular/router'
+import { LoanService } from '../../services/loan.service';
 
 // describe('EditLoanComponent', () => {
 //   let component: EditLoanComponent;
@@ -39,7 +41,9 @@ describe('Edit Loan Component',()=>{
     })
     let fb=new FormBuilder();
     let sn:MatSnackBar;
-    component=new EditLoanComponent(fb,sn);
+    let rt:ActivatedRoute;
+    let loanservice:LoanService
+    component=new EditLoanComponent(fb,sn,loanservice,rt);
   });
   it('should create Edit Loan Component',()=>{
     expect(component).toBeTruthy();

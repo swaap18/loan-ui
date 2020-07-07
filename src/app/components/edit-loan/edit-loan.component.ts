@@ -60,7 +60,7 @@ export class EditLoanComponent implements OnInit {
 // constructor(private route:ActivatedRoute,private fb:FormBuilder){
 // this.form=this.fb.group({
 //   name:[''],
-//   id:['']
+//   id:['']g
 // }
 //this.form=this.fdesc
 // )
