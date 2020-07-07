@@ -39,4 +39,12 @@ describe('AddLoanComponent',()=>{
   it('should create Add Loan',()=>{
     expect(component).toBeTruthy();
   });
+  it('Add loan form should be invalid as first name is invalid',()=>{
+    component.form.controls['userFirstName'].setValue('');
+    expect(component.form.valid).toBeFalsy();
+  }) ;
+  it('Add loan form should be invalid as Id is empty',()=>{
+    component.form.controls['loanId'].setValue('');
+    expect(component.form.valid).toBeFalsy();
+  }) ;
 })
