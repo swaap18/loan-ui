@@ -89,15 +89,38 @@
                     </td>
                 </tr>
             </table>
-            <p>
+            <!-- <p>
                 <mat-form-field class="example-full-width">
                     <textarea matInput placeholder="Created Date" formControlName="createdDate"></textarea>
                 </mat-form-field>
-            </p>
+            </p> -->
+            <table class="example-full-width" cellspacing="0">
+                <tr>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Created Date</mat-label>
+                            <input type="date" matInput placeholder="" formControlName="createdDate">
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Created By</mat-label>
+                            <input matInput placeholder="" formControlName="createdUserId">
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Modified by</mat-label>
+                            <input matInput  placeholder=""
+                                formControlName="modifiedUserId">
+                        </mat-form-field>
+                    </td>
+                </tr>
+            </table>
 
             <div class="button">
                 <button mat-raised-button color="primary" type="submit"
-                    [disabled]="form.controls.firstName.hasError('required') || form.controls.lastName.hasError('required')"
+                    [disabled]="form.controls.firstName.hasError('required')"
                     (click)="openSnackBar()">Edit Loan</button>
                 <a mat-raised-button routerLink="/searchloan" href="#">Cancel</a>
             </div>

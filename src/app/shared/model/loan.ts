@@ -1,17 +1,18 @@
-export class loan{
-    borrower_fname:string
-     borrower_lname:string
-      property_addr1 :string
-      property_addr2 :string
-      city  :string
-       state :string
-        postal_code:string
-        loan_id :string
-        loan_term :string
-        loan_type :string 
-        loan_amt :string
-        loan_create_date :string
-        loan_update_date  :string 
-        created_user_id :string
-        updated_user_id :string
+export class Loan {
+    id: number
+    firstName: string
+    lastName: string
+    propAddress1: string
+    propAddress2: string
+    city: string
+    state: string
+    postalCode: number
+    loanId: string
+    loanTerm: string
+    loanType: string
+    loanAmount: number
+    createdDate: Date
+    updatedDate: Date
+    createdUserId: string
+    modifiedUserId: string
 }

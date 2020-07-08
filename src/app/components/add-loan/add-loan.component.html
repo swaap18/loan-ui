@@ -1,73 +1,125 @@
 <mat-card>
-        <mat-card-title style="text-align: center;">Add Loan</mat-card-title>
-      <mat-card-content>
-        <form [formGroup]="form" class="example-form" (ngSubmit)="submit()">
+  <mat-card-title style="text-align: center;">Add Loan</mat-card-title>
+  <mat-card-content>
+      <form [formGroup]="form" class="example-form" (ngSubmit)="submit()">
 
-        <table class="example-full-width" cellspacing="0"><tr>
-          <td><mat-form-field class="example-full-width">
-            <mat-label>First name</mat-label>
-            <input type="text" matInput placeholder="First Name" formControlName="userFirstName">
-          </mat-form-field></td>
-          <td><mat-form-field class="example-full-width">
-            <mat-label>Last Name</mat-label>
-            <input type="text" matInput placeholder="Last Name" formControlName="userLastName">
-          </mat-form-field></td>
-        </tr></table>
-      <div formGroupName="address">
-        <p><mat-label>Property Address:</mat-label>
-          <mat-form-field class="example-full-width">
-            <mat-label> Address 1</mat-label>
-            <textarea matInput placeholder="Ex. 100 Main St" formControlName="addressLine1"></textarea>
-          </mat-form-field>
-          <mat-form-field class="example-full-width">
-            <mat-label>Address 2</mat-label>
-            <textarea matInput  formControlName="addressLine2"></textarea>
-          </mat-form-field>
-        </p>
-      
-        <table class="example-full-width" cellspacing="0"><tr>
-          <td><mat-form-field class="example-full-width">
-            <mat-label>City</mat-label>
-            <input type="text" matInput placeholder="San frs." formControlName="city">
-          </mat-form-field></td>
-          <td><mat-form-field class="example-full-width">
-            <mat-label>State</mat-label>
-            <input matInput placeholder="Ex. California">
-          </mat-form-field></td>
-          <td><mat-form-field class="example-full-width">
-            <mat-label>Postal Code</mat-label>
-            <input matInput #postalCode maxlength="5" placeholder="Ex. 94105"  formControlName="zipcode">
-            <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
-          </mat-form-field></td>
-        </tr></table>
-      </div>
-        <p><mat-label>Loan/Lien information:</mat-label></p>
-        <table class="example-full-width" cellspacing="0"><tr>
-                <td><mat-form-field class="example-full-width">
-                  <mat-label>Loan Amount</mat-label>
-                  <input type="text" matInput placeholder="Loan Amount" formControlName="loanAmount">
-                </mat-form-field></td>
-                <td><mat-form-field class="example-full-width">
-                  <mat-label>Loan term</mat-label>
-                  <input matInput placeholder="Ex. California"  formControlName="loanTerm">
-                </mat-form-field></td>
-                <td><mat-form-field class="example-full-width">
-                  <mat-label>Loan Id</mat-label>
-                  <input matInput #postalCode maxlength="5" placeholder="Ex. 94105" formControlName="loanId">                  
-                </mat-form-field></td>
-                <td><mat-form-field class="example-full-width">
-                        <mat-label>Loan Type</mat-label>
-                        <input type="text" matInput placeholder="Loan Type" formControlName="loanType">                 
-                      </mat-form-field></td>
-              </tr></table>
+          <table class="example-full-width" cellspacing="0">
+              <tr>
+                  <td>
+                      <mat-form-field class="example-full-width">
+                          <mat-label>First name</mat-label>
+                          <input type="text" matInput placeholder="First Name" formControlName="firstName" >
+                      </mat-form-field>
+                  </td>
+                  <td>
+                      <mat-form-field class="example-full-width">
+                          <mat-label>Last Name</mat-label>
+                          <input type="text" matInput placeholder="Last Name" formControlName="lastName" >
+                      </mat-form-field>
+                  </td>
+              </tr>
+          </table>
+         
               <p>
-                <mat-form-field class="example-full-width">
-                  <textarea matInput placeholder="Legal Docs" formControlName="legaldocs"></textarea>
-                </mat-form-field>
+                  <mat-label>Property Address:</mat-label>
               </p>
+                  <mat-form-field class="example-full-width">
+                      <mat-label> Address 1</mat-label>
+                      <textarea matInput placeholder="Ex. 100 Main St" formControlName="propAddress1"></textarea>
+                  </mat-form-field>
+                  <mat-form-field class="example-full-width">
+                      <mat-label>Address 2</mat-label>
+                      <textarea matInput formControlName="propAddress2"></textarea>
+                  </mat-form-field>
+              
+
+              <table class="example-full-width" cellspacing="0">
+                  <tr>
+                      <td>
+                          <mat-form-field class="example-full-width">
+                              <mat-label>City</mat-label>
+                              <input type="text" matInput placeholder="San frs." formControlName="city">
+                          </mat-form-field>
+                      </td>
+                      <td>
+                          <mat-form-field class="example-full-width">
+                              <mat-label>State</mat-label>
+                              <input matInput placeholder="Ex. California" formControlName="state">
+                          </mat-form-field>
+                      </td>
+                      <td>
+                          <mat-form-field class="example-full-width">
+                              <mat-label>Postal Code</mat-label>
+                              <input matInput #postalCode maxlength="5" placeholder="Ex. 94105"
+                                  formControlName="postalCode">
+                              <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+                          </mat-form-field>
+                      </td>
+                  </tr>
+              </table>
+         
+          <p>
+              <mat-label>Loan/Lien information:</mat-label>
+          </p>
+          <table class="example-full-width" cellspacing="0">
+              <tr>
+                  <td>
+                      <mat-form-field class="example-full-width">
+                          <mat-label>Loan Amount</mat-label>
+                          <input type="text" matInput placeholder="Loan Amount" formControlName="loanAmount">
+                      </mat-form-field>
+                  </td>
+                  <td>
+                      <mat-form-field class="example-full-width">
+                          <mat-label>Loan term</mat-label>
+                          <input matInput placeholder="Ex. California" formControlName="loanTerm">
+                      </mat-form-field>
+                  </td>
+                  <td>
+                      <mat-form-field class="example-full-width">
+                          <mat-label>Loan Id</mat-label>
+                          <input matInput #postalCode maxlength="21" placeholder="Ex. 94105"  formControlName="loanId" >
+                      </mat-form-field>
+                  </td>
+                  <td>
+                      <mat-form-field class="example-full-width">
+                          <mat-label>Loan Type</mat-label>
+                          <input type="text" matInput placeholder="Loan Type" formControlName="loanType">
+                      </mat-form-field>
+                  </td>
+              </tr>
+          </table>
+          <!-- <p>
+              <mat-form-field class="example-full-width">
+                  <textarea matInput placeholder="Created Date" formControlName="createdDate"></textarea>
+              </mat-form-field>
+          </p> -->
+          <table class="example-full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Created Date</mat-label>
+                        <input type="date" matInput placeholder="" formControlName="createdDate">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Created By</mat-label>
+                        <input matInput placeholder="" formControlName="createdUserId">
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Modified by</mat-label>
+                        <input matInput  placeholder=""
+                            formControlName="modifiedUserId">
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
 
               <div class="button">
-                <button mat-raised-button color="primary" type="submit" [disabled]="form.controls.userFirstName.hasError('required') || form.controls.loanId.hasError('required')" (click)="openSnackBar()">Add Loan</button>
+                <button mat-raised-button color="primary" type="submit" [disabled]="form.controls.firstName.hasError('required') || form.controls.loanId.hasError('required')" (click)="openSnackBar()">Add Loan</button>
                 <button mat-raised-button color="primary" type="reset">Reset</button>
                 <a mat-raised-button routerLink="/searchloan" href="#">Cancel</a>
               </div>

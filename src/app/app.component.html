@@ -50,29 +50,14 @@
     flex-direction: column;
     align-items: center;
   }
-
 </style>
 
 <p>
   <mat-toolbar color="primary">
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
-    </button>
     <span>Loan Management System</span>
     <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>favorite</mat-icon>
-    </button>
-    <a mat-button (click)="logout()" *ngIf="isLoggedIn | async" href="#">Log out</a>
-
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
-    </button>
-  
-
+     <a mat-button (click)="logout()" *ngIf="isLoggedIn | async" href="#">Log out</a>
   </mat-toolbar>
 </p>
 
-<!-- <app-login></app-login> -->
-<!-- <app-view-loan></app-view-loan> -->
 <router-outlet></router-outlet>

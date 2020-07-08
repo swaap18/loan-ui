@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {LoanService} from '../../services/loan.service';
 import { Router, ActivatedRoute,ParamMap } from '@angular/router'
+import { Loan } from '../../shared/model/loan';
 @Component({
   selector: 'app-edit-loan',
   templateUrl: './edit-loan.component.html',
@@ -13,6 +14,7 @@ export class EditLoanComponent implements OnInit {
   durationInSeconds = 5;
   id:string;
   dataShow:any;
+  loan:Loan;
   constructor(private fb: FormBuilder, private _snackBar: MatSnackBar,private loanservice:LoanService,private route:ActivatedRoute) {
   
     this.form = this.fb.group({
@@ -32,28 +34,7 @@ export class EditLoanComponent implements OnInit {
       state:['', Validators.required],
       updatedDate: ['', Validators.required],
       _links:[]
-      // borrower_fname: ['', Validators.required],
-      // borrower_lname: ['', Validators.required],
-      // // address: this.fb.group({
-      // //   addressLine1: ['', Validators.required],
-      // //   addressLine2: ['', Validators.required],
-      // //   city: ['', Validators.required],
-      // //   zipcode: ['', Validators.required]
-      // // }),
-      // property_addr1:['', Validators.required],
-      // property_addr2:['', Validators.required],
-      // city:['', Validators.required],
-      // state:['', Validators.required],
-      // postal_code:['', Validators.required],
-      // loan_amt: ['', Validators.required],
-      // loan_term: ['', Validators.required],
-      // loan_id: ['', Validators.required],
-      // loan_type: ['', Validators.required],
-      // loan_create_date :['', Validators.required],
-      // loan_update_date  : ['', Validators.required],
-      // created_user_id :['', Validators.required],
-      // updated_user_id :['', Validators.required],
-    })
+         })
   }
 //emp=[{name:"raj", id:"9898110"},{name:"saj", id:"09112"}];
 // dataShow:any;
@@ -82,8 +63,25 @@ ngOnInit():void{
 
 }
 submit(){
-  console.log(this.form.controls.name.value);
-  console.log(this.form.controls.id.value);
+  
+  this.loan=this.form.value;
+  console.log(this.loan);
+  // this.loan.firstName=this.form.controls.firstName.value;
+  // this.loan.lastName=this.form.controls.lastName.value;
+  // this.loan.propAddress1=this.form.controls.propAddress1.value;
+  // this.loan.propAddress2=this.form.controls.propAddress2.value;
+  // this.loan.city=this.form.controls.city.value;
+  // this.loan.state=this.form.controls.state.value;
+  // this.loan.postalCode=this.form.controls.postalCode.value;
+  // this.loan.loanId=this.form.controls.loanId.value;
+  // this.loan.loanTerm=this.form.controls.loanTerm.value;
+  // this.loan.loanType=this.form.controls.loanType.value;
+  // this.loan.loanAmount=this.form.controls.loanAmount.value;
+  // this.loan.createdDate=this.form.controls.createdDate.value;
+  // this.loan.createdUserId=this.form.controls.createdUserId.value;
+  // this.loan.modifiedUserId=this.form.controls.modifiedUserId.value;
+  console.log(this.loan);
+  this.loanservice.editLoan(this.loan).subscribe(res=>{console.log(res)},err=>console.log(err));
 }
 openSnackBar() {
   this._snackBar.openFromComponent(PizzaPartyComponent, {
