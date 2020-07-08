@@ -51,24 +51,24 @@
     <!-- <div class="wrapper"> -->
     <div>
       <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-        <ng-container matColumnDef="position">
+        <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
-          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="name">
+        <ng-container matColumnDef="firstName">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Borrwer Full Name </th>
-          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="loan_num">
+        <ng-container matColumnDef="loanId">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Loan Number </th>
-          <td mat-cell *matCellDef="let element"><a href="#"[routerLink]="['/editloan',element.loan_num]"> {{element.loan_num}} </a></td>
+          <td mat-cell *matCellDef="let element"><a href="#"[routerLink]="['/editloan',element.id]"> {{element.loanId}} </a></td>
         </ng-container>
 
-        <ng-container matColumnDef="loan_amt">
+        <ng-container matColumnDef="loanAmt">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Loan Amount </th>
-          <td mat-cell *matCellDef="let element"> {{element.loan_amt}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.loanAmount}} </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -76,7 +76,7 @@
       </table>
 
       <!-- Angular 8 pagination -->
-      <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+      <!-- <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator> -->
     </div>
   </mat-card-content>
 </mat-card>
