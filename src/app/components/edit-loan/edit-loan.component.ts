@@ -11,7 +11,7 @@ import { Router, ActivatedRoute,ParamMap } from '@angular/router'
 export class EditLoanComponent implements OnInit {
   form: FormGroup;
   durationInSeconds = 5;
-  id:number;
+  id:string;
   dataShow:any;
   constructor(private fb: FormBuilder, private _snackBar: MatSnackBar,private loanservice:LoanService,private route:ActivatedRoute) {
   
@@ -67,7 +67,7 @@ export class EditLoanComponent implements OnInit {
 // }
 ngOnInit():void{
   //this.route.paramMap.subscribe((p)=>this.id=parseInt(p.get('loanId')));
-  this.route.paramMap.subscribe((p)=>this.id=parseInt(p.get('loanId')));
+  this.route.paramMap.subscribe((p)=>this.id=p.get('loanId'));
   console.log(this.id);
   // this.emp.forEach((ele)=> {if(ele.id===this.id)this.dataShow=ele});
   // console.log(this.dataShow);

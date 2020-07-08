@@ -64,7 +64,7 @@ export interface PeriodicElement {
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, name: 'John', loan_num: '1', loan_amt: 500000.00 },
+  { position: 1, name: 'John', loan_num: '98989811', loan_amt: 500000.00 },
   { position: 2, name: 'Smith', loan_num: '2', loan_amt: 500000.00 },
   { position: 3, name: 'Chris', loan_num: '9898112', loan_amt: 500000.00 },
   { position: 4, name: 'Joe', loan_num: '9898113', loan_amt: 500000.00 },

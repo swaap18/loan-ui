@@ -14,8 +14,8 @@ export class LoanService {
   constructor(private http: HttpClient) {
      
    }
-   public getLoanById(id:number){
-     return this.http.get(url+'loan/'+id);
-     //return this.http.get(url+'loan/search/findByLoanId?loanId='+id);
+   public getLoanById(id:string){
+     //return this.http.get(url+'loan/'+id);
+    return this.http.get(url+'loan/search/findByLoanId?loanId='+id);
    }
 }
