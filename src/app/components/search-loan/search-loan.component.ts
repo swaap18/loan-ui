@@ -122,7 +122,7 @@ export interface LoanSearchResult {
 //   { position: 10, name: 'Clinton', loan_num: '9898119', loan_amt: 500000.00 },
 //   { position: 11, name: 'Tracy', loan_num: '9898119', loan_amt: 500000.00 }
 const SEARCH_RESULT: LoanSearchResult[] = [
-  { id: 1, firstName: 'John', loanId: '1', loanAmt: 500000.00, city: '' },
-  { id: 2, firstName: 'Smith', loanId: '2', loanAmt: 500000.00, city: '' },
+  { id: 1, firstName: 'John', loanId: '1', loanAmount: 500000.00, city: '' },
+  { id: 2, firstName: 'Smith', loanId: '2', loanAmount: 500000.00, city: '' },
 
 ];
