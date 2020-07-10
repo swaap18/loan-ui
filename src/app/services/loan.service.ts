@@ -37,6 +37,6 @@ export class LoanService {
      return this.http.post(url+'loan',loan);
    }
    public editLoan(loan:Loan){
-     return this.http.put(url+'loan',httpOptions);
+     return this.http.post(url+'loan',loan);
    }
 }

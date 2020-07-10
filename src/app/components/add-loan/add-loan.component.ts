@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {Loan} from '../../shared/model/loan'
 import { LoanService } from '../../services/loan.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-loan',
@@ -14,23 +15,23 @@ export class AddLoanComponent implements OnInit {
   form:FormGroup;
   durationInSeconds=5;
   loan:Loan;
-  constructor(private fb:FormBuilder,private _snackBar: MatSnackBar,private loanService:LoanService) {
+  constructor(private fb:FormBuilder,private _snackBar: MatSnackBar,private loanService:LoanService,private router:Router) {
     this.form = this.fb.group({
       city: ['', Validators.required],
-      createdDate: ['', Validators.required],
-      createdUserId: ['', Validators.required],
+      createdDate: [''],
+      createdUserId: [''],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       loanAmount: ['', Validators.required],
       loanId: ['', Validators.required],
-      loanTerm: ['', Validators.required],
-      loanType: ['', Validators.required],
-      modifiedUserId:['', Validators.required],
+      loanTerm: [''],
+      loanType: [''],
+      modifiedUserId:[''],
       postalCode: ['', Validators.required],
       propAddress1: ['', Validators.required],
-      propAddress2: ['', Validators.required],
+      propAddress2: [''],
       state:['', Validators.required],
-      updatedDate: ['', Validators.required]
+      updatedDate: ['']
     })
    }
 
@@ -57,6 +58,13 @@ export class AddLoanComponent implements OnInit {
     });
   this.loan=this.form.value;
   console.log(this.loan);
+  this.go_next();
+  }
+  go_next(){
+    setTimeout(() => {
+        this.router.navigate(['/searchloan'])
+      }
+      , 5000);
   }
 }
 

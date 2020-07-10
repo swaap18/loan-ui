@@ -44,3 +44,8 @@ table {
 th.mat-sort-header-sorted {
   color: black;
 }
+.error{
+  color:green;
+  text-align: center;
+  background-color: greenyellow;
+}

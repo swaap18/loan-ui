@@ -15,25 +15,27 @@ export class EditLoanComponent implements OnInit {
   id:string;
   dataShow:any;
   loan:Loan;
-  constructor(private fb: FormBuilder, private _snackBar: MatSnackBar,private loanservice:LoanService,private route:ActivatedRoute) {
+  constructor(private fb: FormBuilder, private _snackBar: MatSnackBar,private loanservice:LoanService,private route:ActivatedRoute,private router:Router) {
   
     this.form = this.fb.group({
+      id: ['', Validators.required],
       city: ['', Validators.required],
-      createdDate: ['', Validators.required],
-      createdUserId: ['', Validators.required],
+      createdDate: ['', ],
+      createdUserId: [''],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       loanAmount: ['', Validators.required],
       loanId: ['', Validators.required],
       loanTerm: ['', Validators.required],
-      loanType: ['', Validators.required],
-      modifiedUserId:['', Validators.required],
+      loanType: [''],
+      modifiedUserId:[''],
       postalCode: ['', Validators.required],
       propAddress1: ['', Validators.required],
-      propAddress2: ['', Validators.required],
-      state:['', Validators.required],
-      updatedDate: ['', Validators.required],
-      _links:[]
+      propAddress2: [''],
+      state:[''],
+      updatedDate: [''],
+      links:[],
+      content:[]
          })
   }
 //emp=[{name:"raj", id:"9898110"},{name:"saj", id:"09112"}];
@@ -54,7 +56,10 @@ ngOnInit():void{
   // console.log(this.dataShow);
   // console.log(this.form.controls.name.value);
   // this.form.setValue(this.dataShow);
-  this.loanservice.getLoanById(this.id).subscribe(res=>{ Object.assign(this.dataShow=res);console.log(res);this.form.setValue(this.dataShow);});
+  // this.loanservice.getLoanById(this.id).subscribe(res=>{ Object.assign(this.dataShow=res);console.log(res);
+  //   this.form.controls['links'].setValue(" abc");
+  //   this.form.controls['content'].setValue(" abc");
+  //   this.form.setValue(this.dataShow);});
   //this.form=this.dataShow;
   // console.log(this.dataShow);
   // //this.form.setValue("city",)
@@ -80,13 +85,21 @@ submit(){
   // this.loan.createdDate=this.form.controls.createdDate.value;
   // this.loan.createdUserId=this.form.controls.createdUserId.value;
   // this.loan.modifiedUserId=this.form.controls.modifiedUserId.value;
-  console.log(this.loan);
+  //console.log(swapn here);
   this.loanservice.editLoan(this.loan).subscribe(res=>{console.log(res)},err=>console.log(err));
 }
 openSnackBar() {
   this._snackBar.openFromComponent(PizzaPartyComponent, {
     duration: this.durationInSeconds * 1000,
   });
+  //setInterval(this.router.navigate(['/searchloan']),3000)
+  this.go_next();
+}
+go_next(){
+  setTimeout(() => {
+      this.router.navigate(['/searchloan'])
+    }
+    , 5000);
 }
 }
 
