@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import {Loan} from '../../shared/model/loan'
 import { LoanService } from '../../services/loan.service';
 import { Router } from '@angular/router';
+import { SnackComponent } from '../../shared/SnackComponent.component';
 
 @Component({
   selector: 'app-add-loan',
@@ -53,7 +54,7 @@ export class AddLoanComponent implements OnInit {
   }
 
   openSnackBar() {
-    this._snackBar.openFromComponent(PizzaPartyComponent, {
+    this._snackBar.openFromComponent(SnackComponent, {
       duration: this.durationInSeconds * 1000,
     });
   this.loan=this.form.value;
@@ -69,13 +70,13 @@ export class AddLoanComponent implements OnInit {
 }
 
 
-@Component({
-  selector: 'snack-bar-component-example-snack',
-  template:'<span class="example-pizza-party"> Successfully Submitted  </span>',
-  styles: [`
-    .example-pizza-party {
-      color: hotpink;
-    }
-  `],
-})
-export class PizzaPartyComponent {}
+// @Component({
+//   selector: 'snack-bar-component-example-snack',
+//   template:'<span class="example-pizza-party"> Successfully Submitted  </span>',
+//   styles: [`
+//     .example-pizza-party {
+//       color: hotpink;
+//     }
+//   `],
+// })
+// export class PizzaPartyComponent {}
