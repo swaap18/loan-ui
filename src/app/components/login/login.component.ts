@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
   public authenticateUser(userName,password){
     this.authService.getUserByUserName(userName).subscribe(user =>{
       Object.assign(this.user, JSON.parse(user));
+      //this.user = user;
       console.log("checking for password:"+password);
       console.log("checking for this.userPassword:"+this.user.userPassword);
      

@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import {Loan} from '../../shared/model/loan'
 import { LoanService } from '../../services/loan.service';
 import { Router } from '@angular/router';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-add-loan',
@@ -13,9 +14,9 @@ import { Router } from '@angular/router';
 export class AddLoanComponent implements OnInit {
 
   form:FormGroup;
-  durationInSeconds=5;
+  //durationInSeconds=5;
   loan:Loan;
-  constructor(private fb:FormBuilder,private _snackBar: MatSnackBar,private loanService:LoanService,private router:Router) {
+  constructor(private fb:FormBuilder,private _snackBar: MatSnackBar,private loanService:LoanService,private router:Router,private notificationServ :NotificationService) {
     this.form = this.fb.group({
       city: ['', Validators.required],
       createdDate: [''],
@@ -41,25 +42,27 @@ export class AddLoanComponent implements OnInit {
     console.log(this.form.controls.firstName.value);
     this.loan=this.form.value;
     console.log(this.loan);
-    // this.loan.modifiedUserId='swap';
-    // this.loan.createdUserId="swap";
-    console.log(this.loan);
-    this.loanService.addLoan(this.loan).subscribe(res=>console.log(res),err=>console.log(err));
-   
-
-    // console.log(this.form.controls.userFirstName.value);
-    // console.log(this.form.controls.address.value);
-    // console.log(this.form.controls.legaldocs.value);
-  }
-
-  openSnackBar() {
-    this._snackBar.openFromComponent(PizzaPartyComponent, {
-      duration: this.durationInSeconds * 1000,
+    this.loanService.addLoan(this.loan).subscribe(res=>{
+      console.log(res)
+      this.notificationServ.success('Adding Loan Successfully Submitted.');
+      this.go_next();
+    },
+    err=>{
+      console.log(err);
+      this.notificationServ.warn('Adding Loan got failled.');
     });
-  this.loan=this.form.value;
-  console.log(this.loan);
-  this.go_next();
+  
   }
+
+  // openSnackBar() {
+  // //   this._snackBar.openFromComponent(PizzaPartyComponent, {
+  // //     duration: this.durationInSeconds * 1000,
+  // //   });
+  // // this.loan=this.form.value;
+  // console.log(this.loan);
+  // this.notificationServ.success('Adding Loan Successfully Submitted.');
+  // this.go_next();
+  // }
   go_next(){
     setTimeout(() => {
         this.router.navigate(['/searchloan'])
@@ -69,13 +72,13 @@ export class AddLoanComponent implements OnInit {
 }
 
 
-@Component({
-  selector: 'snack-bar-component-example-snack',
-  template:'<span class="example-pizza-party"> Successfully Submitted  </span>',
-  styles: [`
-    .example-pizza-party {
-      color: hotpink;
-    }
-  `],
-})
-export class PizzaPartyComponent {}
+// @Component({
+//   selector: 'snack-bar-component-example-snack',
+//   template:'<span class="example-pizza-party"> Successfully Submitted  </span>',
+//   styles: [`
+//     .example-pizza-party {
+//       color: hotpink;
+//     }
+//   `],
+// })
+// export class PizzaPartyComponent {}

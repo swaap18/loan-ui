@@ -119,7 +119,7 @@
         </table>
 
               <div class="button">
-                <button mat-raised-button color="primary" type="submit" [disabled]="form.controls.firstName.hasError('required') || form.controls.loanId.hasError('required')" (click)="openSnackBar()">Add Loan</button>
+                <button mat-raised-button color="primary" type="submit" [disabled]="form.controls.firstName.hasError('required') || form.controls.loanId.hasError('required')" >Add Loan</button>
                 <button mat-raised-button color="primary" type="reset">Reset</button>
                 <a mat-raised-button routerLink="/searchloan" href="#">Cancel</a>
               </div>

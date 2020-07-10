@@ -34,6 +34,7 @@ export class AuthenticationService {
     )
   }
   
+  //public getUsers(): Observable<
   public setUserName(id: string) {
     sessionStorage.setItem('username', id);
     this.loggedIn.next(true);
