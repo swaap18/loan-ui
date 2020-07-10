@@ -45,7 +45,7 @@ th.mat-sort-header-sorted {
   color: black;
 }
 .error{
-  color:green;
+  color:black;
   text-align: center;
-  background-color: greenyellow;
+  background-color:red;
 }

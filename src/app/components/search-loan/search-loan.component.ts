@@ -49,14 +49,14 @@ export class SearchLoanComponent implements OnInit {
             console.log(value);
             var Li:LoanContent=new LoanContent;
             Object.assign(Li,value);
-            console.log(Li.firstName);
+            //console.log(Li.firstName);
             this.loanElements.push(Li);
          }
          console.log("eelmts"+this.loanElements)
-         console.log("swapnil here")
+         console.log("swapn here")
         }, err => {
           console.log("No data found:" + err);
-          this.error = `No data found.`
+          this.error = `No Results found.`
         });
 
   }
@@ -102,7 +102,7 @@ export class SearchLoanComponent implements OnInit {
       },
       err => {
         console.log("No data found:" + err);
-        this.error = "No data found.";
+        this.error = "No Results found";
         this.loanList.pop();
       
       });
@@ -128,10 +128,10 @@ export class SearchLoanComponent implements OnInit {
           //console.log("swapn")
           if(flag==0) loanElements2=[];
     if(loanElements2.length==0)
-    this.error="No data found"
+    this.error="No Results found"
         this.dataSource = new MatTableDataSource<LoanContent>(loanElements2);
-        console.log("Data source::" + this.dataSource)
-        console.log("Loan List::" + this.loanList)
+        //console.log("Data source::" + this.dataSource)
+        //console.log("Loan List::" + this.loanList)
 
       }
      

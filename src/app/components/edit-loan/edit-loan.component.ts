@@ -56,10 +56,10 @@ ngOnInit():void{
   // console.log(this.dataShow);
   // console.log(this.form.controls.name.value);
   // this.form.setValue(this.dataShow);
-  // this.loanservice.getLoanById(this.id).subscribe(res=>{ Object.assign(this.dataShow=res);console.log(res);
-  //   this.form.controls['links'].setValue(" abc");
-  //   this.form.controls['content'].setValue(" abc");
-  //   this.form.setValue(this.dataShow);});
+  this.loanservice.getLoanById(this.id).subscribe(res=>{ Object.assign(this.dataShow=res);console.log(res);
+    this.form.controls['links'].setValue(" abc");
+    this.form.controls['content'].setValue(" abc");
+    this.form.setValue(this.dataShow);});
   //this.form=this.dataShow;
   // console.log(this.dataShow);
   // //this.form.setValue("city",)
@@ -70,7 +70,7 @@ ngOnInit():void{
 submit(){
   
   this.loan=this.form.value;
-  console.log(this.loan);
+  console.log(this.loan.id);
   // this.loan.firstName=this.form.controls.firstName.value;
   // this.loan.lastName=this.form.controls.lastName.value;
   // this.loan.propAddress1=this.form.controls.propAddress1.value;
