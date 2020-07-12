@@ -1,47 +1,75 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { AuthenticationService } from './services/authentication.service';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { Observable, BehaviorSubject } from '../../node_modules/rxjs';
 
-// describe('AppComponent here', () => {
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       imports: [
-//         RouterTestingModule
-//       ],
-//       providers:[AuthenticationService,HttpClient],
-//       declarations: [
-//         AppComponent
-//       ],
-//     }).compileComponents();
-//   }));
+describe('AppComponent here', () => {
+  let fixture : ComponentFixture<AppComponent>;
+  let appComponent : AppComponent;
+  let authSerivceStb : Partial<AuthenticationService>;
+  let authSerivce : AuthenticationService;
+  let hostElement;
+  beforeEach(async(() => {
+    authSerivceStb ={
+      loggedIn: new BehaviorSubject<boolean>(true), 
+       logout() {        
+        this.loggedIn=false;
+      },
+      get isLoggedIn() {
+        return this.loggedIn;
+      }
+    }
+    TestBed.configureTestingModule({
+      imports: [],
+      providers:[{ provide: AuthenticationService, useValue:authSerivceStb}],
+      declarations: [AppComponent],
+    }).compileComponents();
 
-//   it('should create the app', () => {
-//     const fixture = TestBed.createComponent(AppComponent);
-//     const app = fixture.componentInstance;
-//     expect(app).toBeTruthy();
-//   });
+    fixture = TestBed.createComponent(AppComponent);
+    appComponent = fixture.componentInstance;
+    authSerivce = TestBed.inject(AuthenticationService);
+    hostElement = fixture.nativeElement;
+  }));
 
-//   it(`should have as title 'loanmgmt-ui'`, () => {
-//     const fixture = TestBed.createComponent(AppComponent);
-//     const app = fixture.componentInstance;
-//     expect(app.title).toEqual('loanmgmt-ui');
-//   });
+  it('should create the app', () => {
+    expect(appComponent).toBeTruthy();
+  });
 
-//   // it('should render title', () => {
-//   //   const fixture = TestBed.createComponent(AppComponent);
-//   //   fixture.detectChanges();
-//   //   const compiled = fixture.nativeElement;
-//   //   expect(compiled.querySelector('.content span').textContent).toContain('loanmgmt-ui app is running!');
-//   // });
-// });
+  it(`should have as title 'Loan Management System'`, () => {
+    expect(appComponent.title).toEqual('Loan Management System');
+  });
+  it(`should have as isLoggedIn 'true'`, () => {
+    expect(appComponent.isLoggedIn).toBeTruthy
+  });
+  it(`should have as Tool bar name empty`, () => {
+    const nameDisplay: HTMLElement = hostElement.querySelector('span')
+    expect(nameDisplay.textContent).toBe('');
+  });
+  it(`should have as Tool bar name 'Loan Management system'`, () => {
+    fixture.detectChanges();
+    const nameDisplay: HTMLElement = hostElement.querySelector('span')
+    expect(nameDisplay.textContent).toBe('Loan Management System');
+  });
+  it(`should have logout button visible`, () => {
+    fixture.detectChanges();
+    const nameDisplay: HTMLElement = hostElement.querySelector('a');
+    expect(nameDisplay.textContent).toBe('Log out');
+  });
+  it(`should have logout button Invisible`, () => {
+     authSerivceStb.logout();
+     fixture.detectChanges();
+     const nameDisplay: HTMLElement = hostElement.querySelector('a');
+     expect(nameDisplay).toBeTruthy;//text is empty
+   });
+});
 
 
 describe('App Component',()=>{
   var component:AppComponent;
   beforeEach(()=>{
-    TestBed.configureTestingModule({
+      TestBed.configureTestingModule({
       declarations:[AppComponent],
       providers:[AuthenticationService],
       imports:[]
@@ -52,9 +80,9 @@ describe('App Component',()=>{
   it('should create App Component',()=>{
     expect(component).toBeTruthy();
   });
-  it(`should have as title 'loanmgmt-ui'`, () => {
+  it(`should have as title 'Loan Management System'`, () => {
       
-        expect(component.title).toEqual('loanmgmt-ui');
+        expect(component.title).toEqual('Loan Management System');
       });
 })
 

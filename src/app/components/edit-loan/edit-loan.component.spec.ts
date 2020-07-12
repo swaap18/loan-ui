@@ -42,8 +42,9 @@ describe('Edit Loan Component',()=>{
     let fb=new FormBuilder();
     let sn:MatSnackBar;
     let rt:ActivatedRoute;
-    let loanservice:LoanService
-    component=new EditLoanComponent(fb,sn,loanservice,rt);
+    let loanservice:LoanService;
+    let router:Router;
+    component=new EditLoanComponent(fb,sn,loanservice,rt,router);
   });
   it('should create Edit Loan Component',()=>{
     expect(component).toBeTruthy();

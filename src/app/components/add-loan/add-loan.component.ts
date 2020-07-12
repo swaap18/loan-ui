@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import {Loan} from '../../shared/model/loan'
 import { LoanService } from '../../services/loan.service';
 import { Router } from '@angular/router';
 import { NotificationService } from '../../services/notification.service';
@@ -14,9 +12,8 @@ import { NotificationService } from '../../services/notification.service';
 export class AddLoanComponent implements OnInit {
 
   form:FormGroup;
-  //durationInSeconds=5;
-  loan:Loan;
-  constructor(private fb:FormBuilder,private _snackBar: MatSnackBar,private loanService:LoanService,private router:Router,private notificationServ :NotificationService) {
+
+  constructor(private fb:FormBuilder,private loanService:LoanService,private router:Router,private notificationServ :NotificationService) {
     this.form = this.fb.group({
       city: ['', Validators.required],
       createdDate: [''],
@@ -40,11 +37,9 @@ export class AddLoanComponent implements OnInit {
   }
   submit(){
     console.log(this.form.controls.firstName.value);
-    this.loan=this.form.value;
-    console.log(this.loan);
-    this.loanService.addLoan(this.loan).subscribe(res=>{
+    this.loanService.addLoan(this.form.value).subscribe(res=>{
       console.log(res)
-      this.notificationServ.success('Adding Loan Successfully Submitted.');
+      this.notificationServ.success('Adding Loan Submitted Successfully.');
       this.go_next();
     },
     err=>{
@@ -54,15 +49,6 @@ export class AddLoanComponent implements OnInit {
   
   }
 
-  // openSnackBar() {
-  // //   this._snackBar.openFromComponent(PizzaPartyComponent, {
-  // //     duration: this.durationInSeconds * 1000,
-  // //   });
-  // // this.loan=this.form.value;
-  // console.log(this.loan);
-  // this.notificationServ.success('Adding Loan Successfully Submitted.');
-  // this.go_next();
-  // }
   go_next(){
     setTimeout(() => {
         this.router.navigate(['/searchloan'])
@@ -70,15 +56,3 @@ export class AddLoanComponent implements OnInit {
       , 5000);
   }
 }
-
-
-// @Component({
-//   selector: 'snack-bar-component-example-snack',
-//   template:'<span class="example-pizza-party"> Successfully Submitted  </span>',
-//   styles: [`
-//     .example-pizza-party {
-//       color: hotpink;
-//     }
-//   `],
-// })
-// export class PizzaPartyComponent {}

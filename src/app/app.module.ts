@@ -20,11 +20,12 @@ import { MatSortModule } from '@angular/material/sort';
 import { HttpClientModule } from '@angular/common/http';
 import { AddLoanComponent } from './components/add-loan/add-loan.component';
 import { ViewLoanComponent } from './components/view-loan/view-loan.component';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
 import { AuthenticationService } from './services/authentication.service';
 import { AuthenticationGuard } from './shared/auth/authentication.guard';
 import { EditLoanComponent } from './components/edit-loan/edit-loan.component';
-import { DatePipe } from '@angular/common';
+import { DatePipe, CommonModule } from '@angular/common';
+
 
 const appRoutes: Routes = [
   { path: 'searchloan', component: SearchLoanComponent, canActivate: [AuthenticationGuard] },
@@ -58,6 +59,7 @@ const appRoutes: Routes = [
     MatSnackBarModule,
     MatPaginatorModule,
     MatSortModule,
+    CommonModule,
     HttpClientModule
   ],
   exports: [
