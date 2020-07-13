@@ -7,7 +7,7 @@ import { AuthenticationGuard } from './shared/auth/authentication.guard';
 //import { ViewLoanComponent } from './components/view-loan/view-loan.component';
 import { EditLoanComponent } from './components/edit-loan/edit-loan.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: 'searchloan', component: SearchLoanComponent, canActivate: [AuthenticationGuard] },
   { path: 'addloan', component: AddLoanComponent, canActivate: [AuthenticationGuard] },
   //{ path: 'viewLoan/:loanId', component: ViewLoanComponent, canActivate: [AuthenticationGuard] },

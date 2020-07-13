@@ -17,9 +17,9 @@ const httpOptions = {
 })
 export class AuthenticationService {
 
-  private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+   loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  constructor(private http: HttpClient, private datePipe: DatePipe) {
+  constructor(private http: HttpClient) {
 
   }
   get isLoggedIn() {

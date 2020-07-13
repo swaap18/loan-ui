@@ -4,7 +4,7 @@ import { Validators } from '@angular/forms'
 import { Router } from '@angular/router'
 import { MatTableDataSource } from '@angular/material/table'
 import { Loan } from '../../shared/model/loan';
-import { LoanService } from 'src/app/services/loan.service';
+import { LoanService } from '../../services/loan.service';
 import { invalid } from '@angular/compiler/src/render3/view/util';
 import { resource } from '../../shared/model/resource';
 import { LoanContent } from '../../shared/model/LoanContent';
@@ -46,7 +46,7 @@ export class SearchLoanComponent implements OnInit {
         // console.log("res"+res.content);
         //Populate value to array
          for(var value of res.content){
-            console.log(value);
+           // console.log(value);
             var Li:LoanContent=new LoanContent;
             Object.assign(Li,value);
             //console.log(Li.firstName);

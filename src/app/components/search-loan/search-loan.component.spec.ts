@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router'
 import { SearchLoanComponent } from './search-loan.component';
+import { LoanService } from '../../services/loan.service';
 
 // describe('SearchLoanComponent', () => {
 //   let component: SearchLoanComponent;
@@ -34,7 +35,8 @@ describe('Search loan Component',()=>{
       imports:[Router]
     })
     let sn:Router;
-    component=new SearchLoanComponent(sn);
+    let loanService: LoanService
+    component=new SearchLoanComponent(sn,loanService);
   });
   it('Should create Search Loan Component',()=>{
     expect(component).toBeTruthy();

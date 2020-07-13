@@ -8,7 +8,7 @@ import { Observable } from '../../node_modules/rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title = 'loanmgmt-ui';
+  title = 'Loan Management System';
   isLoggedIn: Observable<boolean>;
 
   constructor(private authService:AuthenticationService){

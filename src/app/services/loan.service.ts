@@ -13,7 +13,8 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class LoanService {
- 
+  uri=url;
+  httpOp=httpOptions;
   constructor(private http: HttpClient) {
      
    }
