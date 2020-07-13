@@ -4,7 +4,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import {LoanService} from '../../services/loan.service';
 import { Router, ActivatedRoute,ParamMap } from '@angular/router'
 import { Loan } from '../../shared/model/loan';
-import { SnackComponent } from '../../shared/SnackComponent.component';
+import { NotificationService } from '../../services/notification.service';
+//import { SnackComponent } from '../../shared/SnackComponent.component';
 @Component({
   selector: 'app-edit-loan',
   templateUrl: './edit-loan.component.html',
@@ -16,7 +17,7 @@ export class EditLoanComponent implements OnInit {
   id:string;
   dataShow:any;
   loan:Loan;
-  constructor(private fb: FormBuilder, private _snackBar: MatSnackBar,private loanservice:LoanService,private route:ActivatedRoute,private router:Router) {
+  constructor(private fb: FormBuilder, private _snackBar: MatSnackBar,private loanservice:LoanService,private route:ActivatedRoute,private router:Router,private notifyService:NotificationService) {
   
     this.form = this.fb.group({
       id: ['', Validators.required],
@@ -69,20 +70,25 @@ submit(){
   this.loan=this.form.value;
   console.log(this.loan.id);
   //console.log(swapn here);
-  this.loanservice.editLoan(this.loan).subscribe(res=>{console.log(res)},err=>console.log(err));
+  this.loanservice.editLoan(this.loan).subscribe(res=>{console.log(res)
+  this.notifyService.success("Details Updated")
+  },err=>{console.log(err)
+    this.notifyService.warn("Updation failed");})
+    this.go_next();
+   
 }
-openSnackBar() {
-  this._snackBar.openFromComponent(SnackComponent, {
-    duration: this.durationInSeconds * 1000,
-  });
+// openSnackBar() {
+//   this._snackBar.openFromComponent(SnackComponent, {
+//  duration: this.durationInSeconds * 1000,
+//   });
   //setInterval(this.router.navigate(['/searchloan']),3000)
-  this.go_next();
-}
+  //this.go_next();
+
 go_next(){
   setTimeout(() => {
       this.router.navigate(['/searchloan'])
     }
-    , 5000);
+    , 4500);
 }
 }
 
