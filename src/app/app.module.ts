@@ -19,7 +19,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { HttpClientModule } from '@angular/common/http';
 import { AddLoanComponent } from './components/add-loan/add-loan.component';
-import { ViewLoanComponent } from './components/view-loan/view-loan.component';
 import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
 import { AuthenticationService } from './services/authentication.service';
 import { AuthenticationGuard } from './shared/auth/authentication.guard';
@@ -29,7 +28,6 @@ import { DatePipe, CommonModule } from '@angular/common';
 
 const appRoutes: Routes = [
   { path: 'searchloan', component: SearchLoanComponent, canActivate: [AuthenticationGuard] },
-  { path: 'viewLoan', component: ViewLoanComponent }
   // {path:'login',component:LoginComponent}
 ]
 
@@ -39,10 +37,9 @@ const appRoutes: Routes = [
     LoginComponent,
     SearchLoanComponent,
     AddLoanComponent,
-    ViewLoanComponent,
     EditLoanComponent
   ],
-  entryComponents: [ViewLoanComponent],
+  entryComponents: [],
   imports: [
     BrowserModule,
     AppRoutingModule,
