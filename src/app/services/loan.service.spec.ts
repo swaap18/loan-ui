@@ -48,7 +48,7 @@ describe('LoanService', () => {
       data => expect(data).toEqual(loan, 'should return the Loans'),
       fail
     )
-    const req = httpTestingController.expectOne(service.uri+'loan');
+    const req = httpTestingController.expectOne(service.uri+'loan?page=0&size=1000');
     expect(req.request.method).toEqual('GET');
   });
   it('Should Edit Loan', () => {

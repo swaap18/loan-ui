@@ -26,10 +26,10 @@ export class AddLoanComponent implements OnInit {
       loanTerm: [''],
       loanType: [''],
       modifiedUserId:[''],
-      postalCode: ['', Validators.required],
-      propAddress1: ['', Validators.required],
+      postalCode: [''],
+      propAddress1: [''],
       propAddress2: [''],
-      state:['', Validators.required],
+      state:[''],
       updatedDate: ['']
     })
    }

@@ -20,7 +20,7 @@ export class EditLoanComponent implements OnInit {
   constructor(private fb: FormBuilder, private _snackBar: MatSnackBar,private loanservice:LoanService,private route:ActivatedRoute,private router:Router,private notifyService:NotificationService) {
   
     this.form = this.fb.group({
-      id: ['', Validators.required],
+      id: [''],
       city: ['', Validators.required],
       createdDate: ['', ],
       createdUserId: [''],
@@ -28,11 +28,11 @@ export class EditLoanComponent implements OnInit {
       lastName: ['', Validators.required],
       loanAmount: ['', Validators.required],
       loanId: ['', Validators.required],
-      loanTerm: ['', Validators.required],
+      loanTerm: [''],
       loanType: [''],
       modifiedUserId:[''],
-      postalCode: ['', Validators.required],
-      propAddress1: ['', Validators.required],
+      postalCode: [''],
+      propAddress1: [''],
       propAddress2: [''],
       state:[''],
       updatedDate: [''],

@@ -37,7 +37,7 @@ export class SearchLoanComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.loanElements=[];
     this.loanService.getLoans().subscribe(
       jsonLoanList => {
         var res:resource=new resource();
@@ -49,7 +49,7 @@ export class SearchLoanComponent implements OnInit {
            // console.log(value);
             var Li:LoanContent=new LoanContent;
             Object.assign(Li,value);
-            //console.log(Li.firstName);
+            console.log(Li.firstName);
             this.loanElements.push(Li);
          }
          console.log("eelmts"+this.loanElements)

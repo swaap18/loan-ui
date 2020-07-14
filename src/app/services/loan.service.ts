@@ -30,7 +30,7 @@ export class LoanService {
    }
 
    public getLoans(): Observable<any>{
-    return this.http.get(url+'loan',httpOptions).pipe(
+    return this.http.get(url+'loan?page=0&size=1000',httpOptions).pipe(
       tap(res => console.log(""),error => console.log('error'))
       )
    }
