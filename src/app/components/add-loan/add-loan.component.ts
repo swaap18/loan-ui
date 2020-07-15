@@ -37,9 +37,9 @@ export class AddLoanComponent implements OnInit {
   ngOnInit(): void {
   }
   submit(){
-    console.log(this.form.controls.firstName.value);
+    //console.log(this.form.controls.firstName.value);
     this.loanService.addLoan(this.form.value).subscribe(res=>{
-      console.log(res)
+      //console.log(res)
       this.notificationServ.success('Adding Loan Submitted Successfully.');
       this.go_next();
     },

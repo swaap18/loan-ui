@@ -16,7 +16,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthenticationService {
-
+   uri=url;
    loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) {
@@ -27,7 +27,7 @@ export class AuthenticationService {
   }
   
   public getUserByUserName(userName): Observable<any> {
-    console.log('calling getUserByName :' + userName);
+    //console.log('calling getUserByName :' + userName);
     return this.http.get<any>(url + 'user/search/findByUserName?name=' + userName, httpOptions).pipe(
       tap(res => console.log("searched User result:"+res),error => console.log('error')),
       //catchError(this.handleError<any>('get UserByName'))

@@ -11,8 +11,12 @@ import {Observable} from 'rxjs'
 import { HttpClientModule } from '../../../../node_modules/@angular/common/http';
 class MockLoanService {
   loandId:number;
-  navigate(){
-    return 'searchloan'
+  navigate():string{
+    return 'searchloan';
+
+  }
+  success(){
+    return 'Adding Loan Submitted Successfully.';
   }
 }
 
@@ -139,4 +143,20 @@ describe('AddLoanComponent', ()=>{
   //   //component.go_next();
   //   expect(spy).toBe("searchloan")
   // })
+  it('should go_next',()=>{
+       // component.go_next();
+        let router=TestBed.get(Router)
+        //let spy=spyOn(router,'navigate')
+       let spy= router.navigate();
+           component.go_next();
+           expect(spy).toBe('searchloan')
+  })
+  it('should call submit',()=>{
+    let notService=TestBed.get(NotificationService);
+    let loanService=TestBed.get(LoanService)
+    component.submit()
+    loanService.addLoan(null)
+    let val=notService.success()
+    expect(val).toBe('Adding Loan Submitted Successfully.');
+  })
 })

@@ -6,7 +6,7 @@ import { AuthenticationService } from '../../services/authentication.service';
 import {Location} from "@angular/common";
 import {fakeAsync, tick} from '@angular/core/testing';
 import {RouterTestingModule} from "@angular/router/testing";
-
+import { User } from '../../shared/model/user';
 import {HarnessLoader} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {MatButtonHarness} from '@angular/material/button/testing';
@@ -182,6 +182,20 @@ describe('Login Component',()=>{
       tick();
       expect(location.path()).toBe('/searchloan');
     }));
+    it('should console error',()=>{
+      let service=TestBed.get(AuthenticationService)
+      let spy=spyOn(service,'getUserByUserName').and.callFake(t=>{
+        return Observable.create(1);
+      });
+      component.authenticateUser("swap","passw");
+      let user=new User();
+      user.userPassword="pass"
+      let v=`Your login attempt was not successful. Try again.
+      Reason: Invalid Credentials.`
+      expect(component.error).toBeDefined();
+           
+
+    })
 })
 
 
