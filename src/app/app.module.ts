@@ -13,23 +13,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
-import { RouterModule, Routes } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { HttpClientModule } from '@angular/common/http';
 import { AddLoanComponent } from './components/add-loan/add-loan.component';
-import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AuthenticationService } from './services/authentication.service';
-import { AuthenticationGuard } from './shared/auth/authentication.guard';
 import { EditLoanComponent } from './components/edit-loan/edit-loan.component';
 import { DatePipe, CommonModule } from '@angular/common';
-
-
-const appRoutes: Routes = [
-  { path: 'searchloan', component: SearchLoanComponent, canActivate: [AuthenticationGuard] },
-  // {path:'login',component:LoginComponent}
-]
 
 @NgModule({
   declarations: [

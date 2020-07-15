@@ -19,14 +19,7 @@ export class LoanService {
      
    }
    public getLoanById(id:string){
-     //return this.http.get(url+'loan/'+id);
     return this.http.get(url+'loan/search/findByLoanId?loanId='+id);
-   }
-
-   public getLoanByName(name:string): Observable<any>{
-    return this.http.get(url+'loan/search/findByFirstName?firstName='+name,httpOptions).pipe(
-      tap(res => console.log(""),error => console.log('error'))
-      )
    }
 
    public getLoans(): Observable<any>{

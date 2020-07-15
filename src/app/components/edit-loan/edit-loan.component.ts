@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { LoanService } from '../../services/loan.service';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router'
+import { Router, ActivatedRoute } from '@angular/router'
 import { Loan } from '../../shared/model/loan';
 import { NotificationService } from '../../services/notification.service';
 
