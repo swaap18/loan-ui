@@ -49,6 +49,11 @@ describe('Search loan Component',()=>{
     component.form.controls['loanId'].setValue('2314');
     expect(component.form.valid).toBeTruthy();
   }) ;
+
+  it('Reset Button', () => {
+    component.resetOnClick
+    expect(component.resetOnClick.length).toBeFalsy;
+  });
   // it('should create two form controls',()=>{
   //     expect(component.form.contains('username')).toBe(true);
   //     expect(component.form.contains('password')).toBe(true);

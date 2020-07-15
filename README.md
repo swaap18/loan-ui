@@ -15,6 +15,7 @@ Notes:
    ng generate component search-loan
 8. Add Anagular meterial 
     ng add @angular/material
+9. ng test --code-coverage to generate coverage of code
 
 
 Move to Project folder and execute following git command
