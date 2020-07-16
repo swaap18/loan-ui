@@ -38,11 +38,10 @@ export class LoginComponent {
         Reason: Invalid Credentials.`
       }
     },err =>{ 
-      console.log("Auth not passed:"+err);
+        console.log("Auth not passed:"+err);
         this.error=`Your login attempt was not successful. Try again.
         Reason: Invalid Credentials.`
-    });
-   
+    });   
   }
   get f(){
     return this.form.controls;
