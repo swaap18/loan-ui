@@ -7,17 +7,24 @@ import { Router } from '../../../../node_modules/@angular/router';
 import { NotificationService } from '../../services/notification.service';
 import { DebugElement } from '../../../../node_modules/@angular/core';
 import { By } from '@angular/platform-browser';
-import {Observable} from 'rxjs'
+import {Observable,of} from 'rxjs'
+import {Location} from "@angular/common";
 import { HttpClientModule } from '../../../../node_modules/@angular/common/http';
 import { MatSnackBarModule, MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 class MockLoanService {
   loandId:number;
   navigate(params){
-    //return 'searchloan';
+    return '/searchloan';
 
   }
   success(){
     return 'Adding Loan Submitted Successfully.';
+  }
+}
+class SpyLocation {
+  urlChanges: string[];
+  path(){
+    return "/searchloan"
   }
 }
 
@@ -29,15 +36,17 @@ describe('AddLoanComponent', ()=>{
   let router:Router;
   let hostElement;
   let buttonDE: DebugElement;
+  let location:Location
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations:[AddLoanComponent],
-      providers:[AddLoanComponent,FormBuilder,{ provide: LoanService },{ provide: Router, useClass: MockLoanService },{ provide: NotificationService }],
+      providers:[AddLoanComponent,FormBuilder,{ provide: LoanService },{ provide: Router, useClass: MockLoanService },{ provide: NotificationService },{provide:Location,useClass:SpyLocation}],
       imports:[HttpClientModule,MatSnackBarModule,BrowserAnimationsModule]
     }).compileComponents();
     fixture = TestBed.createComponent(AddLoanComponent);
     component = fixture.componentInstance;
     router=TestBed.inject(Router)
+    location = TestBed.get(Location);
     //component = TestBed.inject(AddLoanComponent);    
     loanService = TestBed.inject(LoanService);    
     notificationService = TestBed.inject(NotificationService);    
@@ -145,53 +154,25 @@ describe('AddLoanComponent', ()=>{
   it('Should call Notification service using Onspy',()=>{
     let service=TestBed.get(LoanService)
     let notService=TestBed.get(NotificationService)
-    let spy2:any;
+    //let spy2:any;
     //component.form.controls.loandId.setValue('123')
     let loan=component.form.value;
-    loanService.addLoan(loan).subscribe(res=>{spy2=spyOn(notificationService,'success').and.callFake(t=>{ return Observable.create(1); })
-      expect(spy2).toHaveBeenCalled();
-      expect(component.go_next()).toHaveBeenCalled();},er=>{   spy2=spyOn(notificationService,'warn').and.callFake(t=>{ return Observable.create(1); })
-      expect(spy2).toHaveBeenCalled();})
-      //return Observable.create(1);
+    spyOn(loanService,'addLoan').and.returnValue(of({}))
+    let spy2=spyOn(notificationService,'success')
+    component.submit();
+    expect(spy2).toHaveBeenCalled();
     })
-    //fixture.detectChanges()
-  // it('should call search loan from add page',()=>{
-  //   let router=TestBed.get(Router);
-  //   let spy=spyOn(router,'navigate')
-  //   //component.go_next();
-  //   expect(spy).toBe("searchloan")
-  // })
-  it('should go_next',()=>{
-      //  // component.go_next();
-      //   let router=TestBed.get(Router)
-      //   //let spy=spyOn(router,'navigate')
-      //   let spy:any
-      //   component.go_next()
-      //    // this.router.navigate(['/searchloan'])
-      //    spy= router.navigate();
-      //    expect(spy).toBe('searchloan')
-      // let spy:number
-      // component.go_next()
-      // fixture.detectChanges()
-      // spyOn(component,'go_next')
-      // fixture.detectChanges()
-      // let spy2=spyOn(router,'navigate')
-      // expect(spy2).toHaveBeenCalledWith(['/searchloan'])
-  })
-  // it('should call submit',()=>{
-  //   let notService=TestBed.get(NotificationService);
-  //   let loanService=TestBed.get(LoanService)
-  //   component.submit()
-  //   loanService.addLoan(null)
-  //   let val=notService.success()
-  //   expect(val).toBe('Adding Loan Submitted Successfully.');
-  // })
-  // it('should route to search loan',fakeAsync(()=>{
-  //   let serv=TestBed.get(Router)
-  //   component.go_next()
-  //   let spy=spyOn(serv,'navigate')
-  //   fixture.detectChanges();
-  //   tick();
-  //   expect(spy).toHaveBeenCalled()
-  // }))
+    it('navigate to "search-loan" takes you to /searchloan', fakeAsync(() => {
+      router.navigate(['/searchloan']);
+       tick();
+       expect(location.path()).toBe('/searchloan');
+     }));
+     it('should call go_next',()=>{
+      //component.go_next();
+      let val:Promise<boolean>
+      val=Promise.resolve(true)
+      let spy=spyOn(router,'navigate').and.returnValue(val)
+      component.go_next()
+      expect(spy).toBeTruthy();
+     })
 })

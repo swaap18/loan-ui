@@ -14,9 +14,9 @@ import { Routes } from '@angular/router';
 import { AppRoutingModule } from '../../app-routing.module';
 import { HttpClientModule } from '../../../../node_modules/@angular/common/http';
 import { By } from '../../../../node_modules/@angular/platform-browser';
- import { Observable } from 'rxjs';
-// import 'rxjs/getUserByUserName/observable/from';
-// import 'rxjs/getUserByUserName/empty';
+ import { Observable,of } from 'rxjs';
+ //import 'rxjs/getUserByUserName/observable/from';
+// import 'rxjs/getUserByUserName/observable/empty';
 
 // describe('LoginComponent 2', () => {
 //   let component: LoginComponent;
@@ -49,7 +49,9 @@ import { By } from '../../../../node_modules/@angular/platform-browser';
 //  });
 import{
  routes
-} from '../../app-routing.module'
+} from '../../app-routing.module';
+//import { User } from '../../shared/model/user';
+//import { exec } from 'child_process';
 class MockLoanService {
   constructor(){}
   loandId:number;
@@ -91,6 +93,9 @@ describe('Login Component',()=>{
   });
   it('should create Login Loan Component',()=>{
     expect(component).toBeTruthy();
+  });
+  it('should return from control by f function',()=>{
+    expect(component.f).toBeTruthy();
   });
   it('should create two form controls',()=>{
     expect(component.form.contains('username')).toBeTruthy;
@@ -169,43 +174,38 @@ describe('Login Component',()=>{
     expect(buttonDE.nativeElement.disabled).toBeFalsy;
   });
 
-    it('should call Login service using spy',()=>{
+    it('should call submit',()=>{
       let service=TestBed.get(AuthenticationService)
       let spy=spyOn(service,'getUserByUserName').and.callFake(t=>{
         return Observable.create(1);
       });
-      component.authenticateUser("swap","passw");
+      //component.authenticateUser("swap","passw");
+      component.submit();
       expect(spy).toHaveBeenCalled();
+    });    
+    it('should call Login service using spy with success', ()=>{
+      let user:User = new User();
+      let usr = `{"userId": 1,"userName": "vasu","userPassword": "pass"}`;
+      let service=TestBed.get(AuthenticationService)
+      spyOn(service,'getUserByUserName').and.returnValue(of(usr));
+      component.authenticateUser("vasu","pass");
+      expect(service.getUserByUserName).toHaveBeenCalled();
+      expect(service.loggedIn).toBeTruthy;
+    });
+    it('should call Login service using spy with failure case', ()=>{
+      let user:User = new User();
+      let usr = `{"userId": 1,"userName": "vasu","userPassword": "pass123"}`;
+      let service=TestBed.get(AuthenticationService)
+      spyOn(service,'getUserByUserName').and.returnValue(of(usr));
+      component.authenticateUser("vasu","pass");
+      expect(service.getUserByUserName).toHaveBeenCalled();
+      expect(component.error).toContain(`Your login attempt was not successful`);
     });
     it('navigate to "search-loan" takes you to /searchloan', fakeAsync(() => {
-     router.navigate(['/searchloan']);
-      tick();
-      expect(location.path()).toBe('/searchloan');
-    }));
-    it('should console error',()=>{
-      let service=TestBed.get(AuthenticationService)
-      let spy=spyOn(service,'getUserByUserName').and.callFake(t=>{
-        return Observable.create(1);
-      });
-      component.authenticateUser("swap","passw");
-      let user=new User();
-      user.userPassword="pass"
-      let v=`Your login attempt was not successful. Try again.
-      Reason: Invalid Credentials.`
-      expect(component.error).toBeDefined()
-    })
-    it('should call Authenticate user()',()=>{
-        component.submit();
-        expect(component.authenticateUser).toBeDefined()
-    })
-    it('should call authenticate set user()',()=>{
-      let userNew=new User();
-      userNew.userPassword="pass"
-       spyOn(service,'getUserByUserName').and.callFake(t=>{
-         if(userNew.userPassword==='pass')
-            expect(service,'setUserName').
-       })
-    })
+      router.navigate(['/searchloan']);
+       tick();
+       expect(location.path()).toBe('/searchloan');
+     }));
 })
 
 
