@@ -19,33 +19,33 @@ export class LoginComponent {
   constructor(private router:Router, private authService:AuthenticationService) {this.error=""; }
 
   submit(){
-    console.log(this.form.value);
-    this.authenticateUser(this.f.username.value,this.f.password.value);
+   // console.log(this.form.value);
+    this.authenticateUser(this.form.controls.username.value,this.form.controls.password.value);
   }
   public authenticateUser(userName,password){
     this.authService.getUserByUserName(userName).subscribe(usr =>{
       let user:User = new User();
       Object.assign(user, JSON.parse(usr));
-      console.log("checking for password:"+user.userPassword +"<=>"+password);
+     // console.log("checking for password:"+user.userPassword +"<=>"+password);
           
       if(user.userPassword === password){
-        console.log("Auth passed");
+        //console.log("Auth passed");
         this.authService.setUserName(userName);
         this.router.navigate(['/searchloan']);
       }else{
-        console.log("Auth not passed");
+       // console.log("Auth not passed");
         this.error=`Your login attempt was not successful. Try again.
         Reason: Invalid Credentials.`
       }
     },err =>{ 
-      console.log("Auth not passed:"+err);
+      //console.log("Auth not passed:"+err);
         this.error=`Your login attempt was not successful. Try again.
         Reason: Invalid Credentials.`
     });
    
   }
-  get f(){
-    return this.form.controls;
-  }
+  // get f(){
+  //   return this.form.controls;
+  // }
 
 }

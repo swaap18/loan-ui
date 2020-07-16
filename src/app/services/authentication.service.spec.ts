@@ -56,4 +56,7 @@ describe('Authentication Service', () => {
       expect(req.request.method).toEqual('GET');
      expect(user).toBe(user);
   })
+  it('should retrun islggedin',()=>{
+    expect(service.isLoggedIn).toBeDefined();
+  })
 });

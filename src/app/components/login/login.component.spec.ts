@@ -192,9 +192,19 @@ describe('Login Component',()=>{
       user.userPassword="pass"
       let v=`Your login attempt was not successful. Try again.
       Reason: Invalid Credentials.`
-      expect(component.error).toBeDefined();
-           
-
+      expect(component.error).toBeDefined()
+    })
+    it('should call Authenticate user()',()=>{
+        component.submit();
+        expect(component.authenticateUser).toBeDefined()
+    })
+    it('should call authenticate set user()',()=>{
+      let userNew=new User();
+      userNew.userPassword="pass"
+       spyOn(service,'getUserByUserName').and.callFake(t=>{
+         if(userNew.userPassword==='pass')
+            expect(service,'setUserName').
+       })
     })
 })
 

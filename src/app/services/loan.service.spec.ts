@@ -60,6 +60,15 @@ describe('LoanService', () => {
     const req = httpTestingController.expectOne(service.uri+'loan');
     expect(req.request.method).toEqual('POST');
   });
+   it('should get loan By Id',()=>{
+     let value:any;
+    service.getLoanById('2').subscribe(
+      data => expect(data).toEqual(value, 'should Edit the Loans'),
+      fail
+    )
+    const req = httpTestingController.expectOne(service.uri+'loan/search/findByLoanId?loanId='+'2');
+    expect(req.request.method).toEqual('GET');
+   })
 
 
   // it('should add loan',()=>{
