@@ -78,13 +78,14 @@ describe('AuthenticationGuard', () => {
         //TestBed.inject(r)
         let val:Promise<boolean>
         val=Promise.resolve(true)
-        sessionStorage.removeItem('usename')
+        sessionStorage.removeItem('username')
+        guard.canActivate(null,null)
         let spy=spyOn(router,'navigate').and.returnValue(val)
        // component.go_next()
         expect(spy).toBeTruthy();
-        let s=router.navigate(['/login'])
+       // let s=router.navigate(['/login'])
         //expect(s).toHaveBeenCalledWith(['/login'])
-        expect(s).toBeDefined()
+       // expect(s).toBeDefined()
        }))
        
 })
