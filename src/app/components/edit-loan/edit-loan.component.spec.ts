@@ -1,9 +1,8 @@
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { EditLoanComponent } from './edit-loan.component';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder} from '@angular/forms';
 import { LoanService } from '../../services/loan.service';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router'
-import { Loan } from '../../shared/model/loan';
+import { Router, ActivatedRoute } from '@angular/router'
 import { NotificationService } from '../../services/notification.service';
 import { DebugElement } from '../../../../node_modules/@angular/core';
 import { By } from '@angular/platform-browser';
