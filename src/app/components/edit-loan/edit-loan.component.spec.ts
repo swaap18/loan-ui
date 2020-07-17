@@ -1,35 +1,43 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { EditLoanComponent } from './edit-loan.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { LoanService } from '../../services/loan.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router'
 import { Loan } from '../../shared/model/loan';
 import { NotificationService } from '../../services/notification.service';
-import { AuthenticationService } from '../../services/authentication.service';
 import { DebugElement } from '../../../../node_modules/@angular/core';
-
-
 import { By } from '@angular/platform-browser';
-import { Observable } from 'rxjs'
+import { Observable, of } from 'rxjs'
+import { Location } from "@angular/common";
 import { HttpClientModule } from '../../../../node_modules/@angular/common/http';
 
 class MockLoanService {
   loandId: number;
   navigate() {
     return 'editLoan'
+  }  
+  success(){
+    return 'Details Updated.';
   }
 }
 
 
+class SpyLocation {
+  urlChanges: string[];
+  path() {
+    return "/searchloan"
+  }
+}
+
 describe("Edit Loan", (() => {
   let component: EditLoanComponent;
   let loanService: LoanService;
-  loan: Loan;
   let notificationService: NotificationService;
   let fixture: ComponentFixture<EditLoanComponent>;
+  let router: Router;
   let hostElement;
   let buttonDE: DebugElement;
+  let location: Location;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -38,81 +46,90 @@ describe("Edit Loan", (() => {
         provide: LoanService
       },
         { provide: Router, useClass: MockLoanService },
-        { provide: ActivatedRoute, useClass: MockLoanService},
-        { provide: NotificationService, useClass: MockLoanService }],
-      imports:[HttpClientModule]  
+        { provide: ActivatedRoute, useClass: MockLoanService },
+        { provide: NotificationService, useClass: MockLoanService },
+        { provide: Location, useClass: SpyLocation }],
+      imports: [HttpClientModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(EditLoanComponent);
-    component= fixture.componentInstance;
-
+    component = fixture.componentInstance;
+    router = TestBed.inject(Router);
+    location = TestBed.inject(Location);
     loanService = TestBed.inject(LoanService);
     notificationService = TestBed.inject(NotificationService);
-    
-    hostElement= fixture.nativeElement;
+    hostElement = fixture.nativeElement;
   });
 
-  it('Edit form should not be empty', () => {
-    expect(component.form).toBeTruthy;
+  it('should Edit Loan', () => {
+    expect(component).toBeTruthy();
   });
 
-  
-  // it("Edit Loan - Submit", (() => {
-  //   let editForm: FormBuilder;
-  //   component.form.controls.loandId.setValue('1212');
-  //   expect(component.submit()).toHaveBeenCalled;
-  // }));
-}));
+  it('should the form be defined', () => {
+    expect(component.form).toBeDefined();
+  });
 
+  it('should the form not be empty', () => {
+    expect(component.form).toBeTruthy();
+  });
 
-// describe('EditLoanComponent', () => {
-//   let component: EditLoanComponent;
-//   let fixture: ComponentFixture<EditLoanComponent>;
+  it('Edit loan form should be invalid ', () => {
+    expect(component.form.valid).toBeFalsy();
+  });
 
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ EditLoanComponent ]
-//     })
-//     .compileComponents();
-//   }));
+  it('Edit loan form LoanId filed should be exists', () => {
+    expect(component.form.controls['loanId']).toBeTruthy();
+  });
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(EditLoanComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
+  it('Edit loan form should be have cancel button', () => {
+    const cancelButton: HTMLElement = hostElement.querySelector('a');
+    expect(cancelButton.textContent).toBe('Cancel');
+  });
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
+  it('Edit loan form should be have Submit button', () => {
+    const submitButton: HTMLElement = hostElement.querySelector('button[type="submit"]');
+    expect(submitButton.textContent).toBe('Submit');
+  });
 
+  // it('Edit loan form should be have Submit button disabled', () => {
+  //   fixture.detectChanges();
+  //   buttonDE = fixture.debugElement.query(By.css('button[type=submit]'));
+  //   expect(buttonDE.nativeElement.disabled).toBeFalsy;
+  // });
 
+  it('Should call Edit loan service using Onspy', () => {
+    let service = TestBed.get(LoanService)
+    let notService = TestBed.get(NotificationService)
+    let spy = spyOn(service, 'editLoan').and.callFake(t => {
+      return Observable.create(1);
+    });
+  });
 
-// describe('Edit Loan Component',()=>{
-//   var component:EditLoanComponent;
-//   beforeEach(()=>{
-//     TestBed.configureTestingModule({
-//       declarations:[EditLoanComponent],
-//       providers:[],
-//       imports:[]
-//     })
-//     let fb=new FormBuilder();
-//     let sn:MatSnackBar;
-//     let rt:ActivatedRoute;
-//     let loanservice:LoanService;
-//     let router:Router;
-//     component=new EditLoanComponent(fb,sn,loanservice,rt,router);
-//   });
-//   it('should create Edit Loan Component',()=>{
-//     expect(component).toBeTruthy();
-//   });
-  // it('should create two form controls',()=>{
-  //     expect(component.form.contains('username')).toBe(true);
-  //     expect(component.form.contains('password')).toBe(true);
-  //    });
-  //   it('Login form shoudl be invalid',()=>{
-  //     component.form.controls['username'].setValue('');
-  //     expect(component.form.valid).toBeFalsy();
-  //   }) 
-//})line34-51
+  it('Should call Notification service using Onspy', () => {
+    let service = TestBed.get(LoanService)
+    let notService = TestBed.get(NotificationService)
+    //let spy2:any;
+    //component.form.controls.loandId.setValue('123')
+    let loan = component.form.value;
+    spyOn(loanService, 'editLoan').and.returnValue(of({}))
+    let spy2 = spyOn(notificationService, 'success')
+    component.submit();
+    expect(spy2).toHaveBeenCalled();
+  })
+
+  it('navigate to "search-loan" takes you to searchloan', fakeAsync(() => {
+    router.navigate(['/searchloan']);
+    tick();
+    expect(location.path()).toBe('/searchloan');
+  }));
+
+  it('should call go_next', () => {
+    //component.go_next();
+    let val: Promise<boolean>
+    val = Promise.resolve(true)
+    let spy = spyOn(router, 'navigate').and.returnValue(val)
+    component.go_next()
+    expect(spy).toBeTruthy();
+  })
+
+}))
