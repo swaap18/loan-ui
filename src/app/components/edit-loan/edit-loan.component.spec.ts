@@ -102,6 +102,9 @@ describe("Edit Loan", (() => {
     let spy = spyOn(service, 'editLoan').and.callFake(t => {
       return Observable.create(1);
     });
+
+    component.submit();
+    expect(spy).toHaveBeenCalled();
   });
 
   it('Should call Notification service using Onspy', () => {
