@@ -1,11 +1,11 @@
-name: loan-management-ui
+name: loan-ui
 memory: 2G
 disk_quota: 1G
 instances: 1
 buildpack: staticfile_buildpack
 timeout: 180
 routes:
-  - route: loan-service-ui-001.cfapps.io
+  - route: loan-service-ui-002.cfapps.io
 
 # services:
 
