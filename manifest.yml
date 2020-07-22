@@ -1,4 +1,4 @@
-name: loan-manager-ui
+name: loan-management-ui
 memory: 2G
 disk_quota: 1G
 instances: 1
