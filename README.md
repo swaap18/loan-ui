@@ -16,14 +16,14 @@ Notes:
 8. Add Anagular meterial 
     ng add @angular/material
 9. ng test --code-coverage to generate coverage of code
-
 10. npm install newrelic
 11. Copy newrelic.js from node_modules/newrelic into the root directory of your application.
     
     Set a value for app_name.
 
     Replace the license_key value with your New Relic license key from Step 1.
-12. 
+12. ng build --configuration=production - for production configs
+13. ng build --configuration=test - for test deployments 
 
 Move to Project folder and execute following git command
 1. git init

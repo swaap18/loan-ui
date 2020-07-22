@@ -5,8 +5,9 @@ import { User } from '../shared/model/user';
 import { DatePipe } from '@angular/common';
 import { Observable, of } from 'rxjs';
 import { tap, retry, catchError } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
-const url = 'http://localhost:8088/loanManagementService/';
+const url = environment.API_URL;
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json','Access-Control-Allow-Origin': '*' }),
   responseType: 'text' as 'json'

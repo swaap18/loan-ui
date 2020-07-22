@@ -3,8 +3,9 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Loan } from '../shared/model/loan';
+import { environment } from '../../environments/environment';
 
-const url = 'http://localhost:8088/loanManagementService/';
+const url = environment.API_URL;
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json','Access-Control-Allow-Origin': '*' }),
   responseType: 'text' as 'json'
